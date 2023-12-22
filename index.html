@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Billing App</title>
+    <link rel="icon" href="/public/Bill Please.png" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg p-3 mb-2 bg-danger ">
+      <div class="container-fluid">
+        <strong
+          ><a class="navbar-brand fs-3 text-light" href="./index.html"
+            >CAFE PETER</a
+          ></strong
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon" style="background-color: white;"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-light" aria-current="page" href="./index.html"
+                >New Bill</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-light" href="./History.html">History</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+    <section class="box_1">
+      <br>
+      
+      <!-- Burger -->
+      <figure class="figure">
+        <img src="./Assests/Burger.jpeg" class="rounded float-start g-col-6" alt="Burger">
+        <figcaption class="figure-caption text-black fs-4 text">Burger - Rs 120</figcaption>
+        <i class="fas fa-plus-circle" onclick="incrementQuantity('burger-quantity')" ></i>
+    <i class="fas fa-minus-circle" onclick="decrementQuantity('burger-quantity')"></i>
+    <input type="number" id="burger-quantity" value="0">
+    <button type="button" class="btn btn-danger" onclick="calculateTotal()">Add</button>
+      </figure>
+
+ <!-- Fries -->
+      <figure class="figure">
+        <img src="./Assests/Fries.jpeg" class="rounded float-start g-col-6" alt="Fries">
+        <figcaption class="figure-caption text-black fs-4 ">Fries - Rs 90</figcaption>
+        <i class="fas fa-plus-circle"onclick="incrementQuantity('fries-quantity')" ></i>
+    <i class="fas fa-minus-circle" onclick="decrementQuantity('fries-quantity')"></i>
+    <input type="number" id="fries-quantity" value="0">
+    <button type="button" class="btn btn-danger" onclick="calculateTotal()">Add</button>
+      </figure>
+
+      <!-- Coke -->
+      <figure class="figure">
+        <img src="./Assests/Coke.jpg" class="rounded float-start g-col-6" alt="Coke">
+        <figcaption class="figure-caption text-black fs-4 ">Coke - Rs 50</figcaption>
+        <i class="fas fa-plus-circle" onclick="incrementQuantity('coke-quantity')"></i>
+    <i class="fas fa-minus-circle" onclick="decrementQuantity('coke-quantity')"></i>
+    <input type="number" id="coke-quantity" value="0">
+    <button type="button" class="btn btn-danger" onclick="calculateTotal()" >Add</button>
+      </figure>
+      <!-- <br> -->
+      <!-- Pizza -->
+      <figure class="figure">
+        <img src="./Assests/Pizza.jpg" class="rounded float-start g-col-6" alt="Pizza">
+        <figcaption class="figure-caption text-black fs-4 ">Pizza - Rs 150</figcaption>
+        <i class="fas fa-plus-circle" onclick="incrementQuantity('pizza-quantity')" ></i>
+    <i class="fas fa-minus-circle" onclick="decrementQuantity('pizza-quantity')"></i>
+    <input type="number" id="pizza-quantity" value="0">
+    <button type="button" class="btn btn-danger" onclick="calculateTotal()">Add</button>
+      </figure>
+      <!-- Pasta -->
+      <figure class="figure">
+        <img src="./Assests/Pasta.jpg" class="rounded float-start g-col-6" alt="Pasta">
+        <figcaption class="figure-caption text-black fs-4 ">Pasta - Rs 110</figcaption>
+        <i class="fas fa-plus-circle" onclick="incrementQuantity('pasta-quantity')"></i>
+    <i class="fas fa-minus-circle" onclick="decrementQuantity('pasta-quantity')"></i>
+    <input type="number" id="pasta-quantity" value="0">
+    <button type="button" class="btn btn-danger" onclick="calculateTotal()">Add</button>
+      </figure>
+      <!-- Cold Coffee -->
+      <figure class="figure">
+        <img src="./Assests/Cold_coffee.jpg" class="rounded float-start g-col-6" alt="Cold_coffee">
+        <figcaption class="figure-caption text-black fs-4 ">Cold Coffee - Rs 40</figcaption>
+        <i class="fas fa-plus-circle"  onclick="incrementQuantity('coffee-quantity')"></i>
+    <i class="fas fa-minus-circle" onclick="decrementQuantity('coffee-quantity')"></i>
+    <input type="number" id="coffee-quantity" value="0">
+    <button type="button" class="btn btn-danger" onclick="calculateTotal()">Add</button>
+      </figure>
+    </section>
+
+    <!-- Bill -->
+    <section class="box_2">
+        <h2><span class="badge bg-danger">New Bill</span></h2>
+        <center>
+        <div style="margin-top: 40px; font-size: 20px;">
+            <div id="order-items" class="order-items animate__animated animate__fadeIn">
+                <!-- Order items will be dynamically added here -->
+            </div>
+            <div class="total-price animate__animated animate__fadeIn">Total : &#8377 <span id="total-price">0</span></div>
+            <div class="mt-4">
+                <input type="text" id="customer-name" placeholder="Customer Name" class="form-control">
+            </div>
+            <div class="mt-4">
+                <label for="payment-options">Payment Options:</label>
+                <select id="payment-options" class="form-control">
+                    <option value="cash">Cash</option>
+                    <option value="card">Card</option>
+                    <option value="UPI">UPI</option>
+                </select>
+            </div>
+  
+            <div class="mt-4">
+                <label for="dine-options">Dine Options:</label>
+                <div id="dine-options" class="form-check">
+                    <input type="radio" id="dine-in" name="dine-option" value="dine-in" class="form-check-input bg-danger">
+                    <label for="dine-in" class="form-check-label">Dine In</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="dine-out" name="dine-option" value="dine-out" class="form-check-input bg-danger">
+                    <label for="dine-out" class="form-check-label">Dine Out</label>
+                </div>
+            </div>
+            <button class="btn btn-danger btn-custom mt-4" style="width: 30%; height: 5%; font-size: 15px;" id="myBtn" onclick="placeOrder()" >Place Order</button>
+            <button class="btn btn-danger btn-custom mt-4" style="width: 30%; height: 5%; font-size: 15px;" id="myBtn" onclick="printBill()">Print Bill</button>
+        </div>
+    </div>
+</center>
+    </section>
+</main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </body>
+</html>
